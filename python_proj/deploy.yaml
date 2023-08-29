@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-deployment-1
-  labels:
-    app: python
+  name: svc-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: python-1
+      app: svc-pod
   template:
     metadata:
       labels:
-        app: python-1
+        app: svc-pod
     spec:
       containers:
-      - name: python-1
-        image: shmuela6:devops_course
+      - name: flask
+        image: shmuela6/devops_course
+        ports:
+        - containerPort: 80
+
+
